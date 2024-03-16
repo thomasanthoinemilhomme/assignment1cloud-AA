@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "crafty-acumen-406617",
+  "private_key_id": "0a4933a9569dbd59a781e14dd43a125657ab9023",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCYFJYxIqHg1v9l\niPrBi37zp2dUw5zGzt7QHk18DJoXlg6wpx80hWPfYomm2Da5g7r8Pv7BR+yRK7Rq\nmuirXjIAB3J5mo/S8W3uZP/znh4YNF6TLu9u/ya0bRxeXXmdf1CkcewG3F+ibw2g\negYmq3dWwWqIkD+Fcfq2vaUxpEsn/ssd4aBoAqaJq6Zcmpb4Vjm6qJ8NthL/s1La\n7yl39UmbYxsAQX5IzVBnJFBYvIdQj7+1MB6/mMHnEgJ2mgLfMQodqrsWk/IZ+lap\n49MeSj4OdUVZKfEo1X8vf47GZqAwlTGjKsXYA+/rMaQ02kg5+Xt+qN5MM84orU9H\nHt8KTVTbAgMBAAECggEABCRynAw2i5JfnetKvtdzxRaj7MrW0nitC5v5Su4CJOIf\nkuk8CakYEzjl/FqHg95JZN7t/0n1vbu9uM+j+cYuWqwMdRdKk2ZwstC83GzL1g3x\nhSHL2ZXVy8FTFGQiA8u4rYBnroVb9E4BEx3WKaeu/JJ2ukyJJmare3gtiToeTL/Y\n3hM4USZ9CWzJWXYmApq5cp4SD+JE03/YKIYHUJpdsbLtnSIIs3Xxji3rjQ4VPxA0\ngXVeByit3VbRFMnw8dSS6Fzw1mrH88q/WX0fzEykOhvEiwKflIQtoIhbomtA6veq\niFGpxsA2w/TRqMQssE3CiB7c+dr90Jtjlq0vW4EH5QKBgQDR6D00/BsoG/2phE/O\nH3DdWZhcbjdlegIptblTQSv2wYVYg3rqDl+MI7ENsrG64uNgU3sj8xaOxfNah9Kh\ne/f/wNeXCOaFNzSNmZLaD5hIESN5LHDrYa3+GmXbpxR7EWVBmwhK8VG6bLioR6n4\n7t38sXQTZraxSs7+JjjLSfLxPwKBgQC5eanBbacw4pVliokvnwLPRdAowi5d/fHq\nhenAq13aZGkqhakEebknleKrsxK+RGvix01PnylasYHHEOvfkC3SBq+pSWeeOPYu\nGtFP0REF7fJhRCV0q7KIicQad2eUVS7kB9Hez/tCZAtjcQUiuZGSz1ur3ChOA2Xp\nO7+ufdsZZQKBgQDC6UrEg4DYCr3Nhd3xAYL1FzgCRBnOca/GeUcARtkDBYnDujsN\nUZFpeM70cETWy83k6T/EDvqYUrl5C/wLFSkg5DmMtqgPdUaoYb1aHPcDnF57K0gj\nWY2OEYcZopjC+lEyzTmzFUgVutTw9bKgQ3YAKesmBM+J63QvzOAZ7K3ZUwKBgEaA\nyNaOKA+dEc0XbC5980N29jmIFrgD4AGWBdUHTxXFNXTEegsJeihiAVfjKizJNXlu\n6SRrC/09nGdfN0o0NDax8/QVwx2R6YJ9DzOX9TCb0pbGoLZIzgS42aJ14Rmxh7GG\nh3B6/ret7+ZM//bDM2LrD520gl2lTQfrfmGF1dNBAoGBAL7Dhh+XW7qX8ZvqYSqr\nveqH/DlVlIkSSkSjxZO4olAFQJuFF2zFEwx4CkBh/OPUUwD2gF1Ghg4j5uR62w0u\nD/Gaic9HOTPRVbAn78g+f8yZrKRU+3QMv/OAcLaJefDZrV2OeQpsYgoDIT/Pw5IR\naHepMABCCMQEv2Rv9hNG+qWq\n-----END PRIVATE KEY-----\n",
+  "client_email": "crafty-acumen-406617@appspot.gserviceaccount.com",
+  "client_id": "104192045208949869826",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/crafty-acumen-406617%40appspot.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
