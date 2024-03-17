@@ -1,7 +1,6 @@
 
 import os
 import streamlit as st
-pip install streamlit google-cloud-bigquery
 from google.cloud import bigquery
 from google.oauth2 import service_account
 from google.colab import auth
