@@ -1,19 +1,15 @@
-FROM python:3.8-slim
+import os
+import streamlit as st
+from google.cloud import bigquery
+from google.oauth2 import service_account
+import json
 
-# Set the working directory in the container
-WORKDIR /app
-
-# Copy the current directory contents into the container at /app
-COPY . /app
-
-# Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Make port 8501 available to the world outside this container
-EXPOSE 8501
-
-# Define environment variable
-ENV NAME World
-
-# Run streamlit_app.py when the container launches
-CMD ["streamlit", "run", "streamlit_app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+# Assuming the service account JSON is passed as a string in the environment variable
+credentials_raw = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS_JSON")
+if credentials_raw:
+    credentials_dict = json.loads(credentials_raw)
+    credentials = service_account.Credentials.from_service_account_info(credentials_dict)
+    client = bigquery.Client(credentials=credentials, project=credentials.project_id)
+else:
+    st.error("Google Cloud credentials not provided.")
+    st.stop()
