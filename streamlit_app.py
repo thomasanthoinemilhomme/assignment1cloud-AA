@@ -6,6 +6,7 @@ import json
 import requests
 import pandas as pd
 import re
+from streamlit_autocomplete import st_autocomplete
 
 client = bigquery.Client()
 
