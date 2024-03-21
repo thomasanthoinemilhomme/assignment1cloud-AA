@@ -2,6 +2,6 @@ streamlit
 google-cloud-bigquery
 pandas
 requests
-streamlit-autocomplete
+
 
 
