@@ -42,7 +42,11 @@ def filter_by_rating(client, min_rating):
     results = query_job.result()
     return [(row.movieId, row.title, row.avg_rating) for row in results]
 
-
+def fetch_matching_titles(query):
+    # Imagine this is a call to BigQuery or another database
+    sample_titles = ["The Matrix", "The Godfather", "The Shawshank Redemption", "The Dark Knight"]
+    matches = [title for title in sample_titles if query.lower() in title.lower()]
+    return matches
     
 
 def filter_by_release_year(client, year=2019):
@@ -134,11 +138,17 @@ OMDB_API_KEY = "6ba470"
 st.title('BitQuery Movie Explorer')
 
 # Autocomplete example
-title_input = st.text_input('Search movie titles')
-if title_input:
-    titles = autocomplete_titles(client, title_input)
-    display_movie_info(title_input, OMDB_API_KEY)
-
+query = st.text_input("Type the name of a movie:")
+if st.button('Search'):  # User presses this button to update the list of suggestions
+    if query:  # Check if the user has typed something
+        matching_titles = fetch_matching_titles(query)
+        if matching_titles:  # Check if there are any matches
+            # Display matches in a selectbox
+            selected_title = st.selectbox("Select a movie:", options=matching_titles)
+            # You can use the selected title to fetch and display more information about the movie
+            st.write(f"You selected: {selected_title}")
+        else:
+            st.write("No matches found.")
 genre = st.selectbox('Select a genre', ['Action', 'Comedy', 'Drama', 'Romance', 'Sci-Fi'])
 
 if st.button('Filter by Genre'):
