@@ -131,7 +131,7 @@ OMDB_API_KEY = "6ba470"
 
 
 
-st.title('BigQuery Movie Explorer')
+st.title('BitQuery Movie Explorer')
 
 # Autocomplete example
 title_input = st.text_input('Search movie titles')
