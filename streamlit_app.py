@@ -129,8 +129,24 @@ def display_movie_info(raw_title, api_key):
         # Display error message
         st.error(movie_data.get('error', 'An unknown error occurred.'))  
 
+def get_titles(partial_title):
+    sample_titles = ["The Matrix", "The Godfather", "The Shawshank Redemption", "The Dark Knight", "The Grand Budapest Hotel", "The Great Gatsby"]
+    # Filter titles based on partial title
+    filtered_titles = [title for title in sample_titles if partial_title.lower() in title.lower()]
+    return filtered_titles
+if 'partial_title' not in st.session_state:
+    st.session_state['partial_title'] = ''
 
-
+if 'suggestions' not in st.session_state:
+    st.session_state['suggestions'] = []
+def update_suggestions():
+    # Update the suggestions based on the current input
+    st.session_state.suggestions = get_titles(st.session_state.partial_title)
+user_input = st.text_input('Search movie titles', key='partial_title', on_change=update_suggestions)
+if st.session_state.suggestions:
+    st.write("Suggestions:")
+    for suggestion in st.session_state.suggestions:
+        st.write(suggestion)
 OMDB_API_KEY = "6ba470"
 
 
