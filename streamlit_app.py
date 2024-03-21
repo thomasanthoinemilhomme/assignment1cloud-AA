@@ -9,7 +9,17 @@ import re
 from streamlit_autocomplete import st_autocomplete
 
 client = bigquery.Client()
-
+def fetch_all_titles(client):
+    QUERY = """
+    SELECT DISTINCT title
+    FROM `crafty-acumen-406617.movies_1.movies`
+    ORDER BY title
+    LIMIT 50  
+    """
+    query_job = client.query(QUERY)
+    results = query_job.result()
+    return [row.title for row in results]
+    
 def autocomplete_titles(client, partial_title):
     QUERY = f"""
     SELECT title
@@ -129,21 +139,17 @@ def display_movie_info(raw_title, api_key):
 
 
 OMDB_API_KEY = "6ba470"
-
+titles = fetch_all_titles(client)
 
 
 st.title('BigQuery Movie Explorer')
 
 
-title_input = st.text_input('Search movie titles')
-if st.button('Search'):
-    if title_input:
-        titles = autocomplete_titles(client, title_input)
-        selected_title = st.selectbox('Select a movie title', options=titles)
-        
-        if selected_title:
-            display_movie_info(selected_title, OMDB_API_KEY)
+title_input = st_autocomplete('Search movie titles', options=titles, limit=10)
 
+    if title_input:
+        display_movie_info(title_input, OMDB_API_KEY)
+        
 genre = st.selectbox('Select a genre', ['Action', 'Comedy', 'Drama', 'Romance', 'Sci-Fi'])
 
 if st.button('Filter by Genre'):
