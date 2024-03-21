@@ -131,13 +131,17 @@ OMDB_API_KEY = "6ba470"
 
 
 
-st.title('BitQuery Movie Explorer')
+st.title('BigQuery Movie Explorer')
 
-# Autocomplete example
+
 title_input = st.text_input('Search movie titles')
-if title_input:
-    titles = autocomplete_titles(client, title_input)
-    display_movie_info(title_input, OMDB_API_KEY)
+if st.button('Search'):
+    if title_input:
+        titles = autocomplete_titles(client, title_input)
+        selected_title = st.selectbox('Select a movie title', options=titles)
+        
+        if selected_title:
+            display_movie_info(selected_title, OMDB_API_KEY)
 
 genre = st.selectbox('Select a genre', ['Action', 'Comedy', 'Drama', 'Romance', 'Sci-Fi'])
 
