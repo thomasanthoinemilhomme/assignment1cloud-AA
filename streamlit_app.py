@@ -104,28 +104,27 @@ def display_movie_info(raw_title, api_key):
     movie_data = fetch_movie_details_and_cover(title, api_key)
     api_call_successful = movie_data.get('error') is None
     # Check if there's an error key in the returned dictionary
-    if 'error' not in movie_data:
-        # Layout movie details and poster side by side
+    if movie_data:
+        # Layout for movie details
         col1, col2 = st.columns(2)
-        
-        with col1:  # Movie details
-            st.header(movie_data["title"])
-            st.subheader(f"Year: {movie_data['year']}")
-            st.write(f"**Genre:** {movie_data['genre']}")
-            st.write(f"**Director:** {movie_data['director']}")
-            st.write(f"**Cast:** {movie_data['actors']}")
-            st.write(f"**Plot:** {movie_data['plot']}")
-        
-        with col2:  # Movie poster
-            poster_url = movie_data.get("poster_url") if api_call_successful else "https://via.placeholder.com/200x300?text=Poster+Not+Available"
-            if poster_url != "N/A":  # Check if poster URL is not 'N/A'
+
+        with col1:  # Display movie details fetched from BigQuery
+            st.header(movie_details["title"])
+            st.subheader(f"Year: {movie_details['year']}")
+            st.write(f"**Genre:** {movie_details['genre']}")
+            st.write(f"**Director:** {movie_details.get('director', 'N/A')}")
+            st.write(f"**Cast:** {movie_details.get('actors', 'N/A')}")
+            st.write(f"**Plot:** {movie_details.get('plot', 'N/A')}")
+
+        with col2:  # Attempt to fetch and display the movie poster
+            poster_url = fetch_movie_cover(title, api_key) if api_key else "https://via.placeholder.com/200x300?text=Poster+Not+Available"
+            if poster_url and poster_url != "N/A":
                 st.image(poster_url, caption="Movie Poster", width=300)
             else:
-                # Optionally display a placeholder image or a message
-                st.error("Poster not available.")
+                st.write("Poster not available.")
     else:
-        # Display error message
-        st.error(movie_data.get('error', 'An unknown error occurred.'))  
+        # Display an error message if movie details couldn't be fetched from BigQuery
+        st.error("Movie details not found in the database.") 
 
 
 
