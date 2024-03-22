@@ -25,6 +25,7 @@ def filter_by_genre(client, genre):
     SELECT *
     FROM `crafty-acumen-406617.movies_1.movies`
     WHERE genres LIKE '%{genre}%'
+    LIMIT 30
     """
     query_job = client.query(QUERY)
     results = query_job.result()
@@ -37,6 +38,7 @@ def filter_by_rating(client, min_rating):
     JOIN `crafty-acumen-406617.movies_1.movie_ratings` r ON m.movieId = r.movieId
     GROUP BY m.movieId, m.title
     HAVING AVG(r.rating) > {min_rating}
+    LIMIT 30
     """
     query_job = client.query(QUERY)
     results = query_job.result()
@@ -144,9 +146,8 @@ genre = st.selectbox('Select a genre', ['Action', 'Comedy', 'Drama', 'Romance', 
 if st.button('Filter by Genre'):
     movies = filter_by_genre(client, genre)
     for movie in movies:
-        display_movie_info(movie.title, OMDB_API_KEY)  # Assuming display_movie_info can handle a single movie title
-
-
+        processed_title = preprocess_title(movie.title)  # Preprocess the title to remove dates, etc.
+        display_movie_info(processed_title, OMDB_API_KEY)  # Use the processed title for API calls
 # Rating filter example
 min_rating = st.slider('Minimum average rating', 0.0, 5.0, 4.0)
 
